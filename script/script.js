@@ -45,3 +45,26 @@ for (let i = 0; i < pageLinks.length; i++) {
 		});
 	});
 }
+
+let line = document.querySelector('.line'),
+	lineContainer = document.querySelector('.line-container'),
+	menu = document.querySelector('.burger-menu');
+
+function menuOperating() {
+	if (!line.classList.contains('line-active')) {
+		menu.classList.remove('unactive');
+		line.classList.add('line-active');
+	} else {
+		menu.classList.add('unactive');
+		line.classList.remove('line-active');
+	}
+}
+
+document.body.addEventListener('click', (event) => {
+	if (event.target !== menu && event.target !== lineContainer && event.target !== line) {
+		menu.classList.add('unactive');
+		line.classList.remove('line-active');
+	}
+});
+
+lineContainer.addEventListener('click', menuOperating);
